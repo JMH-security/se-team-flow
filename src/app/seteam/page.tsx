@@ -1,20 +1,16 @@
-import { auth } from "@/auth";
-import LogoutForm from "@/components/react/SignOut";
-import { redirect } from "next/navigation";
+import LogoutForm from "@/components/react/LogoutForm";
+import sessionCheck from "@/actions/sessionCheck";
+import { getCollection } from "@/lib/authdb";
 
 export default async function SETeam() {
-	const session = await auth();
+	const sessionUser = await sessionCheck();
 
-	if (!session) {
-		redirect("/");
-	} else {
-		const name = session.user?.name;
+	console.log("Session User Info:", sessionUser);
 
-		return (
-			<div>
-				<LogoutForm />
-				<h1>Welcome {name}</h1>
-			</div>
-		);
-	}
+	return (
+		<div>
+			<LogoutForm />
+			<h1>Welcome </h1>
+		</div>
+	);
 }
