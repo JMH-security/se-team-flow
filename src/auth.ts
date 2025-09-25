@@ -1,4 +1,4 @@
-import "server-only"; //DO I NEED THIS???
+import "server-only"; //DO WE NEED THIS DECLARATION???
 
 import NextAuth from "next-auth";
 import MicrosoftEntraID from "next-auth/providers/microsoft-entra-id";
@@ -24,6 +24,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 		Google({
 			clientId: process.env.GOOGLE_CLIENT_ID,
 			clientSecret: process.env.GOOGLE_SECRET,
+			profile(profile) {
+				return { role: profile.role ?? "G-user", ...profile };
+			},
 			authorization: {
 				params: {
 					prompt: "consent",
@@ -36,5 +39,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 	session: {
 		strategy: "database",
 	},
-	callbacks: {},
+	callbacks: {
+		async signIn({ user }) {
+			// Restrict sign-in to users with specific email domains
+			const allowedDomains = [
+				"securityengineersinc.com",
+				"seiteam.com",
+				"gmail.com",
+				"solustream.com",
+			];
+			const userEmail = user?.email as string;
+			const userDomain = userEmail.split("@")[1];
+			const userAllowed = allowedDomains.includes(userDomain);
+			return userAllowed;
+		},
+	},
 });

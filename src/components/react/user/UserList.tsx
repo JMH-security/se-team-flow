@@ -1,6 +1,7 @@
 "use client";
 
 import { UserType } from "@/lib/schemas/userSchema";
+import Image from "next/image";
 
 interface UserListProps {
 	users: UserType[];
@@ -38,23 +39,21 @@ export default function UserList({
 							className="border p-4 rounded flex justify-between items-center"
 						>
 							<div>
-								<p>
-									<strong>Name:</strong> {user.name}
-								</p>
-								<p>
-									<strong>Email:</strong> {user.email}
-								</p>
 								{user.image && (
-									<p>
-										<strong>Image:</strong>{" "}
-										<img
-											src={user.image}
-											alt={user.name}
-											className="w-16 h-16"
-										/>
-									</p>
+									<Image
+										src={user.image}
+										alt={user.name}
+										width={30}
+										height={30}
+										className="rounded-full"
+									/>
 								)}
 							</div>
+							<div>
+								<p>{user.name}</p>
+								<p>{user.email}</p>
+							</div>
+
 							<div>
 								<button
 									onClick={() => {

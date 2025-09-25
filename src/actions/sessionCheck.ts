@@ -8,6 +8,6 @@ export default async function sessionCheck() {
 		redirect("/");
 	} else {
 		const name = session.user?.name;
-		return session;
+		return name;
 	}
 }

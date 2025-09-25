@@ -20,7 +20,9 @@ export default function Home() {
 			</header>
 			<main className="flex items-center justify-center min-h-[calc(100vh-96px)] px-4">
 				<Card className="flex items-center px-10">
-					<CardTitle>AUTHENTICATION REQUIRED</CardTitle>
+					<CardTitle>
+						<span className="font-extrabold">AUTHENTICATION</span> REQUIRED
+					</CardTitle>
 					<Image
 						className=""
 						src="/se-shield.png"
