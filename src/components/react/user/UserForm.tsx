@@ -62,7 +62,7 @@ export default function UserForm({
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className="mb-8">
+		<form onSubmit={handleSubmit} className="mb-8 h-full w-full">
 			<div className="mb-4">
 				<label className="block text-sm font-medium">Name</label>
 				<input

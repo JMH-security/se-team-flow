@@ -5,9 +5,9 @@ export default async function SETeam() {
 	const sessionUser = await sessionCheck();
 
 	return (
-		<div>
-			<h1>Welcome {sessionUser} </h1>
+		<>
+			<h1>Welcome {sessionUser}</h1>
 			<LogoutForm />
-		</div>
+		</>
 	);
 }

@@ -1,5 +1,7 @@
+import ContentBlock from "@/components/react/reusable/Content-block";
+
 function Admin() {
-	return <div>Administration Panel</div>;
+	return <div className="max-w-[850px] mx-auto">Admin Page</div>;
 }
 
 export default Admin;

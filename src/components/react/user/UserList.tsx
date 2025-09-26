@@ -32,41 +32,41 @@ export default function UserList({
 			{users.length === 0 ? (
 				<p>No users found</p>
 			) : (
-				<ul className="space-y-2">
+				<ul className="space-y-2 bg-white border-b border-black/[0.08]">
 					{users.map((user) => (
 						<li
 							key={user._id}
-							className="border p-4 rounded flex justify-between items-center"
+							className="flex p-2 rounded justify-between items-center"
 						>
 							<div>
 								{user.image && (
 									<Image
 										src={user.image}
 										alt={user.name}
-										width={30}
-										height={30}
+										width={20}
+										height={20}
 										className="rounded-full"
 									/>
 								)}
 							</div>
-							<div>
+							<div className="flex flex-col">
 								<p>{user.name}</p>
 								<p>{user.email}</p>
 							</div>
 
-							<div>
+							<div className="flex">
 								<button
 									onClick={() => {
 										console.log(user);
 										setEditingUser(user);
 									}}
-									className="bg-yellow-500 text-white p-2 rounded mr-2"
+									className="flex bg-yellow-500 text-white p-2 rounded mr-2"
 								>
 									Edit
 								</button>
 								<button
 									onClick={() => handleDelete(user._id!)}
-									className="bg-red-500 text-white p-2 rounded"
+									className="flex bg-red-500 text-white p-2 rounded"
 								>
 									Delete
 								</button>

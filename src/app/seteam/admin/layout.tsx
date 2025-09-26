@@ -7,7 +7,7 @@ export default function SEAdminLayout({
 }>) {
 	return (
 		<>
-			<div className="min-h-screen">
+			<div>
 				<SEAdminHeader />
 				{children}
 			</div>
